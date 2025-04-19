@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Access Token - OAuth2 Client</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .token-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            margin-top: 2rem;
+        }
+        .token-display {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 4px;
+            font-family: monospace;
+            word-break: break-all;
+            margin: 15px 0;
+            border: 1px dashed #666;
+        }
+        .token-info {
+            margin-top: 20px;
+            padding: 15px;
+            background: #e3f2fd;
+            border-radius: 4px;
+        }
+        .expires-in {
+            color: #1976d2;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="token-card">
+        <h1>Authentication Successful!</h1>
+        <h2>Access Token:</h2>
+        <div class="token-display">{{.AccessToken}}</div>
+        
+        <div class="token-info">
+            <p><strong>Token Type:</strong> {{.TokenType}}</p>
+            <p><strong>Expires in:</strong> <span class="expires-in">{{.ExpiresIn}} seconds</span></p>
+        </div>
+    </div>
+</body>
+</html>
