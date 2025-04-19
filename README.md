@@ -1,5 +1,79 @@
 # Auth Service
 
+## Table of Contents
+1. [Project Overview](#project-overview)
+2. [Project Structure](#project-structure)
+3. [Setup and Installation](#setup-and-installation)
+4. [What is OAuth 2.0?](#what-is-oauth-20)
+5. [Key Concepts](#key-concepts)
+6. [Application Registration](#application-registration)
+7. [OAuth2 Flow Diagram](#oauth2-flow-diagram)
+8. [Detailed Flow Explanation](#detailed-flow-explanation)
+9. [OAuth2 Grant Types](#oauth2-grant-types)
+10. [Grant Types Comparison](#grant-types-comparison)
+
+## Project Overview
+This project implements a complete OAuth 2.0 authorization server and a sample client application using Go. It demonstrates the Authorization Code grant type flow with the following components:
+
+### Authorization Server (Port 3000)
+- Full OAuth 2.0 compliant authorization server
+- Client application registration
+- Authorization endpoint for user consent
+- Token issuance and validation
+- Uses PostgreSQL for storing client and authorization data
+- Built with Fiber framework and GORM
+
+### Client Application (Port 5000)
+- Sample OAuth 2.0 client implementation
+- Demonstrates the complete OAuth flow
+- User-friendly consent and token display
+- Built with Fiber framework
+
+## Project Structure
+```
+.
+├── docker-compose.yaml     # Docker composition for all services
+├── auth-server/           # OAuth 2.0 Authorization Server
+│   ├── Dockerfile
+│   ├── main.go           # Server implementation
+│   ├── templates/        # HTML templates for auth flows
+│   └── .env             # Environment configuration
+└── client-app/          # Sample OAuth 2.0 Client
+    ├── Dockerfile
+    ├── main.go          # Client implementation
+    └── templates/       # HTML templates for client flows
+```
+
+## Setup and Installation
+
+1. Prerequisites:
+   - Docker and Docker Compose
+   - Go 1.21 or higher (for local development)
+
+2. Clone the repository:
+   ```bash
+   git clone <repository-url>
+   cd auth-service
+   ```
+
+3. Start the services:
+   ```bash
+   docker-compose up
+   ```
+
+4. Access the applications:
+   - Authorization Server: http://localhost:3000
+   - Client Application: http://localhost:5000
+   - PostgreSQL Database: localhost:5439
+
+### Usage Flow
+
+1. Register your client application at http://localhost:3000
+2. Copy the provided Client ID
+3. Update the Client ID in client-app/main.go
+4. Restart the client application
+5. Visit http://localhost:5000 to test the OAuth flow
+
 ## What is OAuth 2.0?
 
 OAuth 2.0 (Open Authorization) is an industry-standard protocol for authorization that enables applications to obtain limited access to user accounts on other services. It provides secure delegated access to server resources on behalf of a resource owner. Instead of using the resource owner's credentials to access protected resources, OAuth allows applications to obtain an access token - a string that denotes a specific scope, lifetime, and other access attributes.
